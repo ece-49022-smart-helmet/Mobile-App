@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Smart Helmet</string>
+    <string name="Mapbox_access_token">pk.eyJ1IjoibWJhcmJhZ2FsbG8iLCJhIjoiY2pyd3FvaTYzMGZpdTQ0bWw2dWZvdnN2ayJ9.wja8Auxhuv3swR7dOtIhpw</string>
+    <string name="location_permission_explain">In order for the Smart Helmet application to
+        work properly, it needs to access your location</string>
+    <string name="location_permission_not_granted">Smart Helmet does not have permimssion to
+        access your location.  Please enable location permissions.</string>
+
+
+    <!-- Compatibility warnings -->
+    <string name="str_ble_not_supported">
+        Your device does not support Bluetooth Low Energy (BLE).
+        Please upgrade to Android 4.3 to use this app.
+    </string>
+    <string name="str_bt_not_enabled">Please enable bluetooth</string>
+
+
+    <!-- Settings page -->
+    <string name="str_setItem_notif_label">Notifications</string>
+    <string name="str_setItem_notif_des">Update notification filter</string>
+
+    <string name="str_setItem_bt_label">Bluetooth</string>
+    <string name="str_setItem_bt_des">Check Smart Helmet Bluetooth settings</string>
+
+    <string name="str_setItem_night_label">Night Mode</string>
+    <string name="str_setItem_night_des">Enable night mode</string>
+
+    <string name="str_abtItem_abtTermsPriv_label">About, terms &amp; privacy</string>
+    <string name="str_abtItem_abtTermsPriv_des">About, terms, privacy policy, etc.</string>
+
+
+    <!-- About, terms & privacy page -->
+    <string name="str_abtItem_appName_des">Midgets and Men</string>
+
+    <string name="str_abtItem_v_label">Version</string>
+    <string name="str_abtItem_v_des">1.0.0</string>
+
+    <string name="str_abtItem_terms_label">Terms of Service</string>
+    <string name="str_abtItem_terms_des"> </string>
+
+    <string name="str_abtItem_priv_label">Privacy Policy</string>
+    <string name="str_abtItem_priv_des"> </string>
+
+    <string name="str_abtItem_api_label">API licenses</string>
+    <string name="str_abtItem_api_des"> </string>
+
+    <string name="str_abtItem_locDat_label">Location data collection</string>
+    <string name="str_abtItem_locDat_des">On</string>
+
+    <string name="str_abtItem_clear_label">Clear application data</string>
+    <string name="str_abtItem_clear_des"> </string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

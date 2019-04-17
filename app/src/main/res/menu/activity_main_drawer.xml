@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_navigation"
+            android:icon="@drawable/navigation_icon_light"
+            android:title="Navigation">
+        </item>
+        <item android:id="@+id/drawer_statistics"
+            android:icon="@drawable/statistics_icon_light_mode"
+            android:title="Statistics">
+        </item>
+
+        <item android:id="@+id/drawer_settings"
+            android:icon="@drawable/settings_icon"
+            android:title="Settings">
+        </item>
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

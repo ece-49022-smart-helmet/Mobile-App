@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Location_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location Tracking Buttons"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
+    </TextView>
+
+    <Button
+        android:id="@+id/track_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Location_label"
+        android:text="track location">
+    </Button>
+
+
+    <Button
+        android:id="@+id/stop_tracking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/track_location"
+        android:text="stop tracking">
+    </Button>
+
+
+    <TextView
+        android:id="@+id/database_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stop_tracking"
+        android:text="SQL Database Buttons"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp">
+    </TextView>
+
+
+    <Button
+        android:id="@+id/add_dummy_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/database_label"
+        android:text="Add Dummy Entry to Database">
+    </Button>
+
+    <Button
+        android:id="@+id/add_duplicate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_dummy_entry"
+        android:text="add duplicate">
+    </Button>
+
+    <Button
+        android:id="@+id/view_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_duplicate"
+        android:text="View Database">
+    </Button>
+
+    <Button
+        android:id="@+id/clear_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_database"
+        android:text="Clear Database">
+    </Button>
+
+</RelativeLayout>

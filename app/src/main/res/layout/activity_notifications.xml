@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/notificationTextView1"
+        android:text="Allow Notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+    </TextView>
+
+    <TextView
+        android:id="@+id/notificationTextView2"
+        android:text="Notification Filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/notificationTextView1">
+    </TextView>
+
+    <TextView
+        android:id="@+id/notificationTextView3"
+        android:text="Notification Filter (toggle)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/notificationTextView2">
+    </TextView>
+
+    <TextView
+        android:id="@+id/notificationTextView4"
+        android:text="Set filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/notificationTextView3">
+    </TextView>
+
+    <Button
+        android:id="@+id/notification_btn"
+        android:text="Send dummy notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/notificationTextView4"
+        app:layout_constraintStart_toStartOf="parent">
+    </Button>
+
+    <Button
+        android:id="@+id/notification_dnd_en"
+        android:text="Enable Notification Filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/notification_btn">
+    </Button>
+
+    <Button
+        android:id="@+id/notification_dnd_dis"
+        android:text="Disable Notification Filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/notification_dnd_en">
+    </Button>
+
+</android.support.constraint.ConstraintLayout>

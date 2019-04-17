@@ -1,0 +1,49 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Light Mode theme -->
+    <style name="AppThemeLightMode" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryLightMode</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkLightMode</item>
+        <item name="colorAccent">@color/colorAccentLightMode</item>
+
+    </style>
+
+    <!-- Night Mode theme -->
+    <style name="AppThemeDarkMode" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryNightMode</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkNightMode</item>
+        <item name="colorAccent">@color/colorAccentNightMode</item>
+        <item name="android:background">@color/colorAccentNightMode</item>
+        <item name="android:textColor">@color/colorAccentLightMode</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="AppThemeLightMode.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MainPageTheme" parent="AppThemeLightMode">
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MainPageThemeDark" parent="AppThemeDarkMode">
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppThemeLightMode.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppThemeLightMode.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
