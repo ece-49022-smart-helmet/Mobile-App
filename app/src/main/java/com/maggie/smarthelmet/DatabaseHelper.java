@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private Context mContext;
+
     private static final String DATABASE_NAME = "trip_information.db";
     private static final String TABLE_NAME = "Recent_Trips";
 
@@ -22,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
+        mContext = context;
     }
 
 
@@ -69,13 +73,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Cursor sortDatabase() {
+    public Cursor sortDatabaseByCount() {
         SQLiteDatabase database = this.getWritableDatabase();
         onCreate(database);  //create the table if it was recently deleted
-        String[] str = {col5};
 
+        return database.rawQuery("SELECT * FROM "+TABLE_NAME+" ORDER BY "+col5+ " DESC ", null);
+        /*
+        String[] str = {col5};
         Cursor cursor = database.query(TABLE_NAME, str, null, null, null, null, col5+" DESC");
         return cursor;
+        */
+    }
+
+
+    public Cursor sortDatabaseByDayAndCount(String day) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        onCreate(database);
+
+        return database.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+col0+" = "+"'"+day+"'"+" ORDER BY "+col5+" DESC", null);
     }
 
 
@@ -84,6 +99,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
     }
 
+
+    public void showDatabaseAsAlertDialog() {
+        Cursor cursor = this.getData();
+        if (cursor.getCount() == 0) {  //no data available
+            showMessage("Error", "No data found");
+            return;
+        }
+        StringBuffer buffer = new StringBuffer();
+        while (cursor.moveToNext()) {
+            buffer.append("Day: "+cursor.getString(0)+"\n");
+            buffer.append("Start time: "+cursor.getString(1)+"\n");
+            buffer.append("Start location: "+cursor.getString(2)+"\n");
+            buffer.append("Middle location: "+cursor.getString(3)+"\n");
+            buffer.append("End location: "+cursor.getString(4)+"\n");
+            buffer.append("Times taken: "+cursor.getString(5)+"\n\n");
+        }
+        showMessage("Data", buffer.toString());
+
+    }
+
+    public void showDatabaseAsAlertDialog(Cursor cursor) {
+        if (cursor.getCount() == 0) {  //no data available
+            showMessage("Error", "No data found");
+            return;
+        }
+        StringBuffer buffer = new StringBuffer();
+        while (cursor.moveToNext()) {
+            buffer.append("Day: "+cursor.getString(0)+"\n");
+            buffer.append("Start time: "+cursor.getString(1)+"\n");
+            buffer.append("Start location: "+cursor.getString(2)+"\n");
+            buffer.append("Middle location: "+cursor.getString(3)+"\n");
+            buffer.append("End location: "+cursor.getString(4)+"\n");
+            buffer.append("Times taken: "+cursor.getString(5)+"\n\n");
+        }
+        showMessage("Data", buffer.toString());
+    }
+
+    private void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
 
 
     @Override

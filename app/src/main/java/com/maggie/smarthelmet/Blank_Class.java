@@ -63,7 +63,7 @@ public class Blank_Class extends AppCompatActivity {
         locationActivity = new LocationActivity(Blank_Class.this);
         db = new DatabaseHelper(this);
         geocoder = new Geocoder(this);
-        mappingActivity = new MappingActivity();
+        mappingActivity = new MappingActivity(this);
         mContext = this;
 
         Button temp_loc = (Button) findViewById(R.id.track_location);
@@ -116,6 +116,9 @@ public class Blank_Class extends AppCompatActivity {
         viewDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                db.showDatabaseAsAlertDialog();
+
+                /*
                 Cursor cursor = db.getData();
                 if (cursor.getCount() == 0) {  //no data available
                     showMessage("Error", "No data found");
@@ -131,7 +134,7 @@ public class Blank_Class extends AppCompatActivity {
                     buffer.append("Times taken: "+cursor.getString(5)+"\n\n");  //puts the count first?
                 }
                 showMessage("Data", buffer.toString());
-
+                */
             }
         });
 
@@ -159,7 +162,7 @@ public class Blank_Class extends AppCompatActivity {
         @Override
         public void run() {
             if (tripStarted) {
-                coordinatesList.add(new Coordinates(locationActivity.getLatitude(), locationActivity.getLatitude()));
+                coordinatesList.add(new Coordinates(locationActivity.getLatitude(), locationActivity.getLatitude(), mContext));
                 handler2.postDelayed(this, COORDINATES_INTERVAL);
             } else if (tripComplete) {
                 handler2.removeCallbacks(this);
@@ -182,7 +185,7 @@ public class Blank_Class extends AppCompatActivity {
                 SAMPLE_RATE = 5000;  //increase sampling rate
 
                 startTime = format.format(Calendar.getInstance().getTime());
-                startCoordinates = new Coordinates(locationActivity.getLatitude(), locationActivity.getLongitude());
+                startCoordinates = new Coordinates(locationActivity.getLatitude(), locationActivity.getLongitude(), mContext);
                 startLocation = String.valueOf(locationActivity.getLongitude())+", "+String.valueOf(locationActivity.getLongitude());
                 //startAddr = coordToAddr(locationActivity.getLatitude(), locationActivity.getLongitude());
                 /*
@@ -210,7 +213,7 @@ public class Blank_Class extends AppCompatActivity {
             if (tripComplete) {
                 endTime = format.format(Calendar.getInstance().getTime());
                 //endAddr = coordToAddr(locationActivity.getLatitude(), locationActivity.getLongitude());
-                endCoordinates = new Coordinates(locationActivity.getLatitude(), locationActivity.getLongitude());
+                endCoordinates = new Coordinates(locationActivity.getLatitude(), locationActivity.getLongitude(), mContext);
                 endLocation = String.valueOf(locationActivity.getLongitude())+", "+String.valueOf(locationActivity.getLongitude());
                 /*
                 endLocation = (endAddr != null) ? endAddr :
@@ -349,17 +352,28 @@ public class Blank_Class extends AppCompatActivity {
     public void addDummyData() {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 
-        db.addRouteEntry("Sunday", "09:12:18", "TempStart_sunday", "TempMid_sunday", "TempEnd_sunday", 1);
-        db.addRouteEntry("Saturday", "23:14:31", "TempStart_saturday", "TempMid_saturday", "TempEnd_saturday", 8);
-        db.addRouteEntry("Monday", "07:18:27", "TempStart_monday", "TempMid_monday", "TempEnd_monday", 1);
-        db.addRouteEntry("Sunday", "12:39:52", "TempStart_sunday2", "TempMid_sunday2", "TempEnd_sunday2", 2);
-        db.addRouteEntry("Thursday", "17:45:41", "TempStart_thursday", "TempMid_thursday", "TempEnd_thursday", 1);
-        db.addRouteEntry("Tuesday","21:57:12", "TempStart_tuesday", "TempMid_tuesday", "TempEnd_tuesday", 3);
-        db.addRouteEntry("Friday", "13:23:42", "TempStart_friday", "TempMid_friday", "TempEnd_friday", 5);
-        db.addRouteEntry("Monday", "08:45:19", "TempStart_monday", "TempMid_monday", "TempEnd_monday", 1);
+        // 132 Andrew Place to Cary Quad to Corec
+        db.addRouteEntry("Sunday", "09:12:18", "40.4249334, -86.9090662", "40.4308254, -86.9081624", "40.4295837, -86.9217344", 18);
+        //Town and Gown to halfway to PMU
+        db.addRouteEntry("Saturday", "23:14:31", "40.4256701, -86.9022181", "40.423392, -86.907047", "40.4246260, -86.9104090", 8);
+        //home to PMU to EE
+        db.addRouteEntry("Monday", "07:18:27", "40.4249334, -86.9090662", "40.4246260, -86.9104090", "40.4294721, -86.9124838", 4);
+        //Jimmy Johns to halfway to MSEE
+        db.addRouteEntry("Sunday", "12:39:52", "40.4238800, -86.9084510", "40.425941, -86.9125242", "40.4290358, -86.9117378", 1);
+        //Potter to PMU to home
+        db.addRouteEntry("Thursday", "17:45:41", "40.4275052, -86.9122769", "40.4246260, -86.9104090", "40.4249334, -86.9090662", 7);
+        //home to halfway to WALC
+        db.addRouteEntry("Tuesday","16:23:12", "40.4249334, -86.9090662", "40.426035, -86.911374", "40.4272982, -86.9133015", 3);
+        //EE to halfway to Another Broken Egg -- @ shef and sophia
+        db.addRouteEntry("Friday", "11:23:42", "40.4294721, -86.9124838", "40.429769, -86.912365", "40.4307049, -86.913023", 12);
+        //home to Cary to Corec
+        db.addRouteEntry("Friday", "16:23:47", "40.4249334, -86.9090662", "40.4308254,-86.9081624", "40.4295837, -86.9217344", 9);
+        //EE to halfway to Vienna
+        db.addRouteEntry("Monday", "08:25:19", "40.4294721, -86.9124838", "40.429769, -86.912365", "40.4240729, -86.9075626", 1);
 
         return;
     }
+
 
 
     public boolean checkForDuplicate_tempData(String day, String time) {

@@ -247,7 +247,10 @@ public class MainActivity extends AppCompatActivity implements
         Intent intent;
 
         if (id == R.id.drawer_navigation) {
+            intent = new Intent(MainActivity.this, NavigationActivity.class);
+            startActivity(intent);
             //Check if they have Google Maps or some other maps app installed
+            /*
             if (appInstalled("com.google.android.apps.maps")) {
                 Toast.makeText(this, "Google Maps is installed...YAY!", Toast.LENGTH_LONG).show();
             } else {
@@ -257,6 +260,7 @@ public class MainActivity extends AppCompatActivity implements
                 AlertDialog mapsNotInstalled = builder.create();
                 mapsNotInstalled.show();
             }
+            */
 
         } else if (id == R.id.drawer_statistics) {
             intent = new Intent(MainActivity.this, StatisticsActivity.class);
